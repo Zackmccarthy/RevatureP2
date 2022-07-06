@@ -2,8 +2,9 @@ package com.example.entity;
 
 import lombok.*;
 
-
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -11,17 +12,26 @@ import javax.persistence.*;
 @Setter
 @Data
 @Entity
-@Table(name="users")
+@Table(name = "users")
 public class User {
+
     @Id
     @GeneratedValue
-    private int user_id;
+    private int id;
     private String username;
     private String password;
+    private String phoneNumber;
+    private String email;
+    private String address;
     @Enumerated(EnumType.STRING)
     private PaymentType paymentType;
-    @Enumerated(EnumType.STRING)
-    private MenuType menu;
-    @Enumerated(EnumType.STRING)
-    private UserType users;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+        name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private List<Role> roles = new ArrayList<>();
+
+
 }

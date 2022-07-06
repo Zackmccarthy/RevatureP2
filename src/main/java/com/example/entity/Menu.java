@@ -2,8 +2,7 @@ package com.example.entity;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -11,10 +10,17 @@ import javax.persistence.Table;
 @Setter
 @Data
 @Entity
-@Table(name="menus")
+@Table(name = "menus")
 public class Menu {
+
+    @Id
+    @GeneratedValue
     private int menu_id;
     private String dishName;
     private double price;
-
+    private String availability;
+    private String description;
+    @ManyToOne
+    @JoinColumn(name = "restaurant_id")
+    private Restaurant restaurant;
 }

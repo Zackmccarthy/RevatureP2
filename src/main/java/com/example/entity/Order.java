@@ -1,6 +1,5 @@
 package com.example.entity;
 
-
 import lombok.*;
 
 import javax.persistence.*;
@@ -20,18 +19,16 @@ public class Order {
     @GeneratedValue
     private int order_id;
     private double price;
+    private boolean deliveryMethod;
     @Enumerated(EnumType.STRING)
     private PaymentType paymentType;
 
-    @ManyToMany(fetch= FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "orders_menus",
-            joinColumns = @JoinColumn (name = "order_id"),
-            inverseJoinColumns = @JoinColumn (name = "menus_id")
+            joinColumns = @JoinColumn(name = "order_id"),
+            inverseJoinColumns = @JoinColumn(name = "menus_id")
 
     )
     private List<Order> orders = new ArrayList<>();
-
-
-
 }
