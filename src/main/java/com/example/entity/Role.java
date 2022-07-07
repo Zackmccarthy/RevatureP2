@@ -1,0 +1,24 @@
+package com.example.entity;
+
+import lombok.*;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+@Data
+@Entity
+@Table(name = "roles")
+public class Role {
+
+    @Id
+    @GeneratedValue
+    private int id;
+    private String name;
+
+}
