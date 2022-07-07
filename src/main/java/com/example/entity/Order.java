@@ -16,7 +16,16 @@ import java.util.List;
 
 public class Order {
     @Id
-    @GeneratedValue
+    @SequenceGenerator(
+            name = "order_sequence",
+            sequenceName = "order_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue (
+            strategy = GenerationType.SEQUENCE,
+            generator = "order_sequence"
+    )
+    @Column(columnDefinition = "serial")
     private int order_id;
     private double price;
     private boolean deliveryMethod;

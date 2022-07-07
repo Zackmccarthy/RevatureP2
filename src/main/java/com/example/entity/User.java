@@ -16,7 +16,16 @@ import java.util.List;
 public class User {
 
     @Id
-    @GeneratedValue
+    @SequenceGenerator(
+            name = "user_sequence",
+            sequenceName = "user_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue (
+            strategy = GenerationType.SEQUENCE,
+            generator = "user_sequence"
+    )
+    @Column(columnDefinition = "serial")
     private int id;
     private String username;
     private String password;
