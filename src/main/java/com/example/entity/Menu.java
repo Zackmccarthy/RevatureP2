@@ -14,7 +14,16 @@ import javax.persistence.*;
 public class Menu {
 
     @Id
-    @GeneratedValue
+    @SequenceGenerator(
+            name = "menu_sequence",
+            sequenceName = "menu_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue (
+            strategy = GenerationType.SEQUENCE,
+            generator = "menu_sequence"
+    )
+    @Column(columnDefinition = "serial")
     private int menu_id;
     private String dishName;
     private double price;

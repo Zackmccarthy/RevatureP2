@@ -13,7 +13,16 @@ import javax.persistence.*;
 public class Restaurant {
 
     @Id
-    @GeneratedValue
+    @SequenceGenerator(
+            name = "restaurant_sequence",
+            sequenceName = "restaurant_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue (
+            strategy = GenerationType.SEQUENCE,
+            generator = "restaurant_sequence"
+    )
+    @Column(columnDefinition = "serial")
     private int id;
     private String restaurantName;
     @OneToOne
