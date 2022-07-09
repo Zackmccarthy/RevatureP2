@@ -1,12 +1,12 @@
 package com.example.rest;
 
+import com.example.dto.UserDto;
 import com.example.entity.User;
+import com.example.exceptions.UserNotFoundException;
 import com.example.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -25,9 +25,10 @@ public class UserRestController {
     )
     public Optional<User> getUser(@PathVariable("id") int id) {
         Optional<User> user = userRepository.findById(id);
-        if (user.isPresent()) {
-            return user;
-        }
-        return user;
+        return null;
     }
+
+
+
+
 }

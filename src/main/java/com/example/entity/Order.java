@@ -28,9 +28,11 @@ public class Order {
     @Column(columnDefinition = "serial")
     private int order_id;
     private double price;
-    private boolean deliveryMethod;
+    private boolean is_delivery;
     @Enumerated(EnumType.STRING)
     private PaymentType paymentType;
+    @Enumerated(EnumType.STRING)
+    private OrderStatus orderStatus;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
@@ -39,5 +41,9 @@ public class Order {
             inverseJoinColumns = @JoinColumn(name = "menus_id")
 
     )
-    private List<Order> orders = new ArrayList<>();
+    private List<Menu> menus = new ArrayList<>();
+
+    @OneToOne
+    @JoinColumn
+    private User user;
 }
