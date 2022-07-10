@@ -29,6 +29,8 @@ public class Menu {
     private double price;
     private String availability;
     private String description;
+    private String review;
+    private String ingredients;
     @ManyToOne
     @JoinColumn(name = "restaurant_id")
     private Restaurant restaurant;
