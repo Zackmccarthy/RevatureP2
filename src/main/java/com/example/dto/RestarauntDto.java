@@ -10,4 +10,5 @@ import lombok.*;
 public class RestarauntDto {
     private int id;
     private String restaurantName;
+    private String description;
 }

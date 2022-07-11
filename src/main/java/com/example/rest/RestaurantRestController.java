@@ -7,10 +7,7 @@ import com.example.exceptions.RestaurantNotFoundException;
 import com.example.repository.RestaurantRepository;
 import com.example.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,6 +15,7 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 @RestController
+@CrossOrigin
 public class RestaurantRestController {
 
     @Autowired
@@ -40,6 +38,7 @@ public class RestaurantRestController {
                     RestarauntDto restarauntDto = new RestarauntDto();
                     restarauntDto.setId(restaurantEntity.getId());
                     restarauntDto.setRestaurantName(restaurantEntity.getRestaurantName());
+                    restarauntDto.setDescription(restaurantEntity.getDescription());
                     return restarauntDto;
                 })
                 .collect(Collectors.toList());
@@ -59,6 +58,7 @@ public class RestaurantRestController {
             RestarauntDto restarauntDto = new RestarauntDto();
             restarauntDto.setId(restaurantEntity.getId());
             restarauntDto.setRestaurantName(restaurantEntity.getRestaurantName());
+            restarauntDto.setDescription(restaurantEntity.getDescription());
             return restarauntDto;
         }
         else {
