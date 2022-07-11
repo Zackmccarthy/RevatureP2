@@ -25,6 +25,7 @@ public class Restaurant {
     @Column(columnDefinition = "serial")
     private int id;
     private String restaurantName;
+    private String description;
     @OneToOne
     @JoinColumn
     private User user;
