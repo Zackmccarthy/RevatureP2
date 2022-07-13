@@ -1,6 +1,7 @@
 package com.example.rest;
 
 import com.example.dto.RestarauntDto;
+import com.example.entity.Menu;
 import com.example.entity.Restaurant;
 import com.example.entity.User;
 import com.example.exceptions.RestaurantNotFoundException;
@@ -78,4 +79,5 @@ public class RestaurantRestController {
         Optional<Restaurant> restaurant = restaurantRepository.findRestaurantByManager(user);
         return restaurant;
     }
+
 }
