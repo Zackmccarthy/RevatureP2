@@ -5,6 +5,7 @@ import com.example.entity.OrderStatus;
 import com.example.entity.User;
 import com.example.repository.OrderRepository;
 import com.example.repository.UserRepository;
+import com.example.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,6 +20,15 @@ public class OrderRestController {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private OrderService orderService;
+
+    OrderRestController(OrderRepository orderRepository, UserRepository userRepository, OrderService orderService) {
+        this.orderRepository = orderRepository;
+        this.userRepository = userRepository;
+        this.orderService = orderService;
+    }
 
     @RequestMapping(
             value = "api/orders",
@@ -80,7 +90,6 @@ public class OrderRestController {
         return orders;
     }
 
-
     @RequestMapping(
             value = "api/order/{id}",
             method = RequestMethod.GET,
@@ -94,5 +103,15 @@ public class OrderRestController {
         return orders;
     }
 
+    @RequestMapping(
+            value = "approve-order/{id}",
+            method = RequestMethod.PATCH
+    )
+    public void approveOrder(
+            @PathVariable("id") int id,
+            @RequestBody Order order
+    ) {
+        orderService.setOrderToAccepted(id, order);
+    }
 
 }
