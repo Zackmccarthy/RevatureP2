@@ -1,0 +1,7 @@
+<!-- <p>items-list works! {{cartSize}} item(s) in cart</p> -->
+<a routerLink="">Back</a>
+<div class="list-group">
+    <div *ngFor="let item of items" class="list-group-item">
+        <app-items [value]="item"></app-items>
+    </div>
+</div>

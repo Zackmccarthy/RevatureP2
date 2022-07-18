@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-P2';
+
+  // cart: Array<any> = []
+
+  // addToCart(item: any) {
+  //   console.log('hi')
+  //   this.cart.push(item)
+  // }
+
 }
