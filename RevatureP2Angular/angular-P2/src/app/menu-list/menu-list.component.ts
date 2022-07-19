@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { RestaurantService } from '../restaurant.service';
 
 export class Restaurant {
   constructor(
@@ -16,30 +17,9 @@ export class Restaurant {
 })
 export class MenuListComponent implements OnInit {
 
-  menuItems = [
-    {
-      name: "VEG",
-      price: 100.00,
-      currencyCode: 'USD',
-      description: 'Veg is always yummy',
-      isAvailable: true,
-      imgPath: "assets/veg.png",
-      makeDate: Date.now()
-    },
-    {
-      name: "Non-VEG",
-      price: 200.00,
-      offPrice: 10,
-      description: 'Non-veg is not always yummy',
-      isAvailable: true,
-      imgPath: "assets/non-veg.jpg",
-      makeDate: Date.now()
-    },
-  ]
-
   restaurants: Restaurant[] = [];
   constructor(
-    private httpClient: HttpClient
+    private restaurantService: RestaurantService
   ) { }
 
   ngOnInit(): void {
@@ -47,12 +27,15 @@ export class MenuListComponent implements OnInit {
   }
 
   getRestaurant() {
-    this.httpClient.get<any>('http://localhost:8080/api/restaurants').subscribe(
-      response => {
-        console.log(response);
-        this.restaurants = response;
+    this.restaurantService.getRestaurants()
+    .subscribe({
+      next:(response:any) => {
+        this.restaurants = response
+      },
+      error: (err: any) => {
+        console.log(err)
       }
-    );
+    })
   }
 
 }

@@ -1,0 +1,39 @@
+<a routerLink="">Back</a>
+<button (click)="clearItems()" type="button" class="btn btn-primary ms-2">Clear Cart</button>
+<div class="card">
+    <div class="card-header">Items in Cart</div>
+    <div class="card-body">
+        <table class="table table=striped">
+            <thead>
+                <td>Product ID</td>
+                <td>Item Name</td>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let c of cart | keyvalue; let idx=index">
+                    {{item|json}}
+                    <td>{{c.value.item.menu_id}}</td>
+                    <td>{{c.value.item.dishName}}</td>
+                    <td>${{c.value.item.price}}</td>
+                    <td>{{c.value.quantity}}</td>
+                    <td>${{c.value.quantity * c.value.item.price}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="card-body">
+            <form [formGroup]="itemForm">
+                <div class="form-group">
+                    <label>Payment</label>
+                    <select class="form-control form-select" [(ngModel)]="selected" formControlName="type" name="type">
+                        <option *ngFor="let payment of paymentTypes">{{payment}}</option>
+                    </select>
+                    {{selected}}
+                </div>
+            </form>
+        </div>
+        {{total | currency}}
+        <button (click)="handleSubmit()" type="button" class="btn btn-primary ms-2">Checkout</button>
+    </div>
+</div>

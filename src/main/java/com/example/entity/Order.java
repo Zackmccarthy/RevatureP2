@@ -1,5 +1,7 @@
 package com.example.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
 
 import javax.persistence.*;
@@ -29,8 +31,7 @@ public class Order {
     private int order_id;
     private double price;
     private boolean is_delivery;
-    @Enumerated(EnumType.STRING)
-    private PaymentType paymentType;
+    private String payment_type;
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
 
@@ -38,7 +39,7 @@ public class Order {
     @JoinTable(
             name = "orders_menus",
             joinColumns = @JoinColumn(name = "order_id"),
-            inverseJoinColumns = @JoinColumn(name = "menus_id")
+            inverseJoinColumns = @JoinColumn(name = "menu_id")
 
     )
     private List<Menu> menus = new ArrayList<>();

@@ -4,6 +4,11 @@
   </div>
   <div class="col-10">
     <app-header></app-header>
-    <app-menu-list></app-menu-list>
+    <div class="d-flex">
+      <app-cart></app-cart>
+      <!-- <a class="nav-link active" [routerLink]="['/cart']" routerLinkActive="active"><button type="button" class="btn btn-dark ms-3 btn-sm mb-2">View Cart</button></a> -->
+    </div>
+    <router-outlet></router-outlet>
   </div>
 </div>
+

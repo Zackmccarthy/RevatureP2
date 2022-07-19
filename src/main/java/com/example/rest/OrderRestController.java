@@ -1,5 +1,6 @@
 package com.example.rest;
 
+import com.example.entity.Menu;
 import com.example.entity.Order;
 import com.example.entity.OrderStatus;
 import com.example.entity.User;
@@ -9,6 +10,7 @@ import com.example.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -104,14 +106,26 @@ public class OrderRestController {
     }
 
     @RequestMapping(
-            value = "approve-order/{id}",
+            value = "change-status/{id}",
             method = RequestMethod.PATCH
     )
     public void approveOrder(
             @PathVariable("id") int id,
             @RequestBody Order order
     ) {
-        orderService.setOrderToAccepted(id, order);
+        orderService.setOrderStatus(id, order);
     }
+
+    @RequestMapping(
+            value = "add-new-order",
+            method = RequestMethod.POST,
+            consumes = {"application/json"}
+    )
+    public void addNewOrder(
+            @RequestBody Order order
+    ) {
+        orderService.addOrder(order);
+    }
+
 
 }
