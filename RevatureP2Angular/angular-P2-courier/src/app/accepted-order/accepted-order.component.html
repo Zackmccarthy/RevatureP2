@@ -1,1 +1,25 @@
 <p>accepted-order works!</p>
+<div>
+    <div class="col-9">
+        <div class="display-4">
+            Restaurant Location:
+        </div>
+        <ul class="mt-2 nav nav-tabs">
+            <li class="nav-item">
+                <a  class="nav-link">Items Ordered</a>
+            </li>
+            <li class="nav-item">
+                <a  class="nav-link">Delivery Address</a>
+            </li>
+        </ul>
+        <ng-container  class="display-6">
+            
+        </ng-container>
+        <div *ngIf="isTabSelected(2)" class="display-6">
+            <p>Address: </p>
+            <p>Phone Number: </p>
+        </div>
+        <button type="button" class="btn btn-primary mt-2">Accept</button>
+        
+    </div>
+</div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-accepted-order',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./accepted-order.component.css']
 })
 export class AcceptedOrderComponent implements OnInit {
+
+  @Input("value")
+  acceptedOrders = {}
 
   constructor() { }
 

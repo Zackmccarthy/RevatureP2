@@ -7,11 +7,12 @@ import { OrdersListComponent } from './orders-list/orders-list.component';
 import { OrdersComponent } from './orders/orders.component';
 import { AcceptedOrderComponent } from './accepted-order/accepted-order.component';
 import { OrdersDeliveredComponent } from './orders-delivered/orders-delivered.component';
+import { AcceptedOrderListComponent } from './accepted-order-list/accepted-order-list.component';
 
 
 const routes: Routes=[
   {path:'',component:OrdersListComponent,pathMatch:'full'},
-  {path:'accepted-order', component: AcceptedOrderComponent},
+  {path:'accepted-order-list', component: AcceptedOrderListComponent},
   {path:'delivered-orders', component: OrdersDeliveredComponent},
   {path:'**',component:NotFoundComponent}
 ]
@@ -21,6 +22,7 @@ const routes: Routes=[
     OrdersListComponent,
     OrdersComponent,
     NotFoundComponent,
+    AcceptedOrderListComponent,
     AcceptedOrderComponent,
     OrdersDeliveredComponent
   ],

@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 @RestController
-@CrossOrigin
+@CrossOrigin("*")
 public class RestaurantRestController {
 
     @Autowired
