@@ -18,9 +18,10 @@
             </div>
         </ng-container>
         <div *ngIf="isTabSelected(2)" class="display-6">
-            {{orders.user.address}}, {{orders.user.phoneNumber}}
+            <p>Address: {{orders.user.address}}</p>
+            <p>Phone Number: {{orders.user.phoneNumber}}</p>
         </div>
         <button (click)="acceptOrder()" type="button" class="btn btn-primary mt-2">Accept</button>
-        <button (click)="denyOrder()" type="button" class="btn btn-danger mt-2 ms-2">Deny</button>
+        
     </div>
 </div>

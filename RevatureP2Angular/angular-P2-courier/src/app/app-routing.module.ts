@@ -5,9 +5,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { OrdersListComponent } from './orders-list/orders-list.component';
 import { OrdersComponent } from './orders/orders.component';
+import { AcceptedOrderComponent } from './accepted-order/accepted-order.component';
+import { OrdersDeliveredComponent } from './orders-delivered/orders-delivered.component';
+
 
 const routes: Routes=[
   {path:'',component:OrdersListComponent,pathMatch:'full'},
+  {path:'accepted-order', component: AcceptedOrderComponent},
+  {path:'delivered-orders', component: OrdersDeliveredComponent},
   {path:'**',component:NotFoundComponent}
 ]
 
@@ -15,7 +20,9 @@ const routes: Routes=[
   declarations:[
     OrdersListComponent,
     OrdersComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    AcceptedOrderComponent,
+    OrdersDeliveredComponent
   ],
   imports: [RouterModule.forRoot(routes), CommonModule, ReactiveFormsModule, FormsModule],
   exports: [RouterModule]
