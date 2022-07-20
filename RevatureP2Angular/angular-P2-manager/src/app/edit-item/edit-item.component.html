@@ -1,0 +1,40 @@
+<div id="body">
+    <div class="row">
+      <div class="col-6">
+        <div class="card card-body" id="card">
+          <span class="display-6">Edit Menu Item</span>
+          <form [formGroup]="editItemForm" (submit)="handleSubmit()" >
+            <div class="form-group">
+              <label>Menu Item Name</label>
+              <input formControlName="dishName" placeholder={{newMenu[0].dishName}} class="form-control"/>
+            </div>
+            <div class="form-group">
+              <label>Description</label>
+              <textarea formControlName="description" placeholder="{{newMenu[0].description}}" rows="3" class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+              <label>Ingredients</label>
+              <textarea formControlName="ingredients" placeholder="{{newMenu[0].ingredients}}" class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+              <label>Price</label>
+              <input formControlName="price" placeholder="{{newMenu[0].price}}" type="number" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label>Image</label>
+                <input formControlName="image_url" placeholder="{{newMenu[0].image_url}}" class="form-control"/>
+              </div>
+            <div class="form-group">
+              <label>Availability</label>
+              <select formControlName="availability" class="form-control">
+                <option class="selected">IN STOCK</option>
+                <option>OUT OF STOCK</option>
+              </select>
+            </div>
+            <br/>
+            <button class="d-flex btn btn-dark ms-auto">Edit Item</button>
+          </form>
+        </div>
+      </div>
+    </div>
+</div>
