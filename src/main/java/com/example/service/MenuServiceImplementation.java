@@ -32,6 +32,7 @@ public class MenuServiceImplementation implements MenuService {
         item.setDishName(menu.getDishName());
         item.setIngredients(menu.getIngredients());
         item.setPrice(menu.getPrice());
+        item.setImage_url(menu.getImage_url());
         item.setReview(menu.getReview());
         Optional<Restaurant> restaurant = restaurantRepository.findById(restaurantId);
         item.setRestaurant(restaurant.get());
@@ -48,6 +49,7 @@ public class MenuServiceImplementation implements MenuService {
         item.get().setDishName(menu.getDishName());
         item.get().setIngredients(menu.getIngredients());
         item.get().setPrice(menu.getPrice());
+        item.get().setImage_url(menu.getImage_url());
         item.get().setReview(menu.getReview());
 
         menuRepository.save(item.get());

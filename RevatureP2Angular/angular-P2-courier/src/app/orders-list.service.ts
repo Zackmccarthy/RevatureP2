@@ -15,30 +15,6 @@ export class OrdersListService {
     private httpClient: HttpClient
   ) { }
 
-  // addToCart(item : any, qty: number): void {
-  //   let {menu_id} = item
-  //   let {price} = item
-  //   let cartItems = this.cart[menu_id]
-  //   if (!cartItems) {
-  //     cartItems = {item, quantity: qty}
-  //     this.total += price
-  //   }
-  //   else {
-  //     cartItems = {...cartItems, quantity:cartItems.quantity + qty}
-  //     this.total += price * qty
-  //   }
-  //   if(cartItems.quantity === 0) {
-  //     delete this.cart[menu_id];
-  //     this.total = 0
-  //   }
-  //   else {
-  //     this.cart[menu_id] = cartItems;
-  //   }
-  //     console.log(this.cart)
-  //     console.log(this.total)
-  //     this.cartStream.next(this.cart)
-  // }
-
   // cartStream = new BehaviorSubject<any>([])
 
   // private data$: Observable<string>
@@ -48,14 +24,13 @@ export class OrdersListService {
       return this.httpClient.get(`${this.apiUrl}/${status}`)
     }
 
-  acceptOrder(order_id: number) {
+  acceptOrder(order_id: number, courier_id: number) {
     console.log("order_id" + order_id)
-    return this.httpClient.patch(`${this.apiUrlChangeStatus}/${order_id}`, {"orderStatus": "ACCEPTED"})
+    return this.httpClient.patch(`${this.apiUrlChangeStatus}/${order_id}`, {"orderStatus": "ACCEPTED", "courier_id": courier_id})
   }
 
-  denyOrder(order_id: number) {
-    console.log("order_id" + order_id)
-    return this.httpClient.patch(`${this.apiUrlChangeStatus}/${order_id}`, {"orderStatus": "DENIED"})
+  completeOrder(order_id: number, courier_id: number) {
+    return this.httpClient.patch(`${this.apiUrlChangeStatus}/${order_id}`, {"orderStatus": "COMPLETED", "courier_id": courier_id})
   }
 
 }

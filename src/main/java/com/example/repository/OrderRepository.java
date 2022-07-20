@@ -21,4 +21,7 @@ public interface OrderRepository extends CrudRepository<Order, Integer> {
 
     @Query("SELECT o from Order o WHERE o.orderStatus = ?1")
     List<Order> findOrdersByStatus(OrderStatus orderStatus);
+
+    @Query("SELECT o from Order o WHERE o.courier_id = ?1 AND o.orderStatus = 'COMPLETED'")
+    Iterable<Order> findByCourierIdCompleted(int courier_id);
 }

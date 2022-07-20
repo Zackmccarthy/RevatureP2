@@ -58,6 +58,19 @@ public class OrderRestController {
     }
 
     @RequestMapping(
+            value = "api/orders/courier-completed/{id}",
+            method = RequestMethod.GET,
+            produces = {
+                    "application/json"
+            }
+    )
+    public Iterable<Order> getCourierCompletedOrders(@PathVariable("id") int id) {
+        Iterable<Order> courierOrders = orderRepository.findByCourierIdCompleted(id);
+
+        return courierOrders;
+    }
+
+    @RequestMapping(
             value = "api/orders/manager/{id}",
             method = RequestMethod.GET,
             produces = {
