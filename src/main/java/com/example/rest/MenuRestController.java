@@ -33,6 +33,18 @@ public class MenuRestController {
     }
 
     @RequestMapping(
+            value = "api/menu/{id}",
+            method = RequestMethod.GET,
+            produces = {
+                    "application/JSON"
+            }
+    )
+    public Optional<Menu> getMenu(@PathVariable("id") int id) {
+        Optional<Menu> menu = menuRepository.findById(id);
+        return menu;
+    }
+
+    @RequestMapping(
             value = "api/menus/{id}",
             method = RequestMethod.GET,
             produces = {
@@ -55,5 +67,17 @@ public class MenuRestController {
             @RequestBody Menu menu
     ) {
         menuService.addMenuItem(id, menu);
+    }
+
+    @RequestMapping(
+            value = "edit-menu-item/{id}",
+            method = RequestMethod.PATCH,
+            consumes = {"application/json"}
+    )
+    public void editItem(
+            @PathVariable("id") int id,
+            @RequestBody Menu menu
+    ) {
+        menuService.editMenuItem(id, menu);
     }
 }

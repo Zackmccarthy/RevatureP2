@@ -38,4 +38,19 @@ public class MenuServiceImplementation implements MenuService {
 
         menuRepository.save(item);
     }
+
+    @Override
+    public void editMenuItem(int menuId, Menu menu) {
+
+        Optional<Menu> item = menuRepository.findById(menuId);
+        item.get().setAvailability(menu.getAvailability());
+        item.get().setDescription(menu.getDescription());
+        item.get().setDishName(menu.getDishName());
+        item.get().setIngredients(menu.getIngredients());
+        item.get().setPrice(menu.getPrice());
+        item.get().setReview(menu.getReview());
+
+        menuRepository.save(item.get());
+
+    }
 }
