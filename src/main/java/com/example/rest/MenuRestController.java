@@ -14,7 +14,7 @@ import java.util.Collections;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin
+@CrossOrigin("*")
 public class MenuRestController {
 
     @Autowired
