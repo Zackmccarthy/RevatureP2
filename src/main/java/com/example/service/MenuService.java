@@ -6,4 +6,6 @@ import org.springframework.stereotype.Service;
 public interface MenuService {
 
     void addMenuItem(int restaurantId, Menu menu);
+
+    void editMenuItem(int menuId, Menu menu);
 }

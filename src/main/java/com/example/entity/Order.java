@@ -3,6 +3,7 @@ package com.example.entity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -32,6 +33,9 @@ public class Order {
     private double price;
     private boolean is_delivery;
     private String payment_type;
+    @Column(name = "courier_id")
+    @Nullable
+    private Integer courier_id;
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
 

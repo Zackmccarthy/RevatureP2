@@ -31,6 +31,7 @@ public class OrderServiceImplementation implements OrderService {
 
         Optional<Order> newOrder = orderRepository.findById(order_id);
         newOrder.get().setOrderStatus(order.getOrderStatus());
+        newOrder.get().setCourier_id(order.getCourier_id());
         orderRepository.save(newOrder.get());
     }
 

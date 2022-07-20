@@ -45,6 +45,32 @@ public class OrderRestController {
     }
 
     @RequestMapping(
+            value = "api/orders/courier/{id}",
+            method = RequestMethod.GET,
+            produces = {
+                    "application/json"
+            }
+    )
+    public Iterable<Order> getCourierAcceptedOrders(@PathVariable("id") int id) {
+        Iterable<Order> courierOrders = orderRepository.findByCourierId(id);
+
+        return courierOrders;
+    }
+
+    @RequestMapping(
+            value = "api/orders/manager/{id}",
+            method = RequestMethod.GET,
+            produces = {
+                    "application/JSON"
+            }
+    )
+    public Iterable<Order> getManagerOrders(@PathVariable("id") int id) {
+        Iterable<Order> orders = orderRepository.findOrdersByStatus(OrderStatus.ACCEPTED);
+
+        return orders;
+    }
+
+    @RequestMapping(
             value = "api/orders/pending",
             method = RequestMethod.GET,
             produces = {
