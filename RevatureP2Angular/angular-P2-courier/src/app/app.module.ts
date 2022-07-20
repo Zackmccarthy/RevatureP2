@@ -10,11 +10,12 @@ import { OrdersListComponent } from './orders-list/orders-list.component';
 import { OrdersComponent } from './orders/orders.component';
 import {HttpClientModule} from '@angular/common/http';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     SidebarNavComponent,
-    HeaderComponent
+    HeaderComponent,   
   ],
   imports: [
     BrowserModule,
