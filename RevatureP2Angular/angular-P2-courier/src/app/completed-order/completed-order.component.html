@@ -1,0 +1,18 @@
+<div>
+    <div class="col-9">
+        <table class="table table=striped">
+            <thead>
+                <td>Restaurant Name</td>
+                <td>Price</td>
+                <td>Your Cut</td>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{completedOrders.menus[0].restaurant.restaurantName}}</td>
+                    <td>{{completedOrders.price | currency}}</td>
+                    <td>{{completedOrders.price * 0.2 + 4 | currency}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

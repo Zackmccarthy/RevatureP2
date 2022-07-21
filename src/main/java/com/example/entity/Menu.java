@@ -31,6 +31,7 @@ public class Menu {
     private String description;
     private String review;
     private String ingredients;
+    private String image_url;
     @ManyToOne
     @JoinColumn(name = "restaurant_id")
     private Restaurant restaurant;

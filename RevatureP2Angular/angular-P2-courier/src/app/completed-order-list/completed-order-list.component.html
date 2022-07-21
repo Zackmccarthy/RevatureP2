@@ -1,0 +1,8 @@
+<div class="display-5 mb-2">
+    My Completed Orders
+</div>
+<div class="list-group">
+    <div *ngFor="let order of completedOrders" class="list-group-item">
+        <app-completed-order [value]="order"></app-completed-order>
+    </div>
+</div>

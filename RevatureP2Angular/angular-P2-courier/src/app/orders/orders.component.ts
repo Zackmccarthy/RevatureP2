@@ -19,6 +19,8 @@ export class OrdersComponent implements OnInit {
 
   currentTab = 1
 
+  courier_id = 3
+
   handleTabChange(event: Event, tabIndex: number) {
     this.currentTab = tabIndex
     console.log(this.currentTab)
@@ -31,18 +33,7 @@ export class OrdersComponent implements OnInit {
   acceptOrder() {
     var id = this.orders.order_id
     console.log("approve")
-    this.orderListService.acceptOrder(id)
-    .subscribe({
-      next: (response: any) => {
-        console.log(response)
-      }
-    })
-  }
-
-  denyOrder() {
-    var id = this.orders.order_id
-    console.log("denied")
-    this.orderListService.denyOrder(id)
+    this.orderListService.acceptOrder(id, this.courier_id)
     .subscribe({
       next: (response: any) => {
         console.log(response)

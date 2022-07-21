@@ -8,7 +8,7 @@ import { AcceptedOrdersService } from '../accepted-orders.service';
 })
 export class AcceptedOrderListComponent implements OnInit {
 
-  acceptedOrders = {}
+  acceptedOrders: any = {}
 
   constructor(
     private acceptedOrdersService: AcceptedOrdersService
